@@ -1,4 +1,4 @@
-import {lesson01} from '../lessons/lesson-01.js?v=4';
+import {lesson01} from '../lessons/lesson-01.js?v=5';
 import {execute,stop} from './runner.js';
 const titles=[lesson01.title,'for cikls ar skaitļiem un aprēķiniem','while cikls','Ciklu salīdzināšana un nosacījumi ciklos','Saraksti list','Sarakstu pārveidošana','Sarakstu apstrāde ar cikliem','Aprēķini ar saraksta datiem','Datu atlase un meklēšana','Sarakstu veidošana no lietotāja ievades','Kompleksi praktiskie uzdevumi'];
 const outcomes=['Izmanto range(start, stop, step), skaitītājus un uzkrājošos mainīgos.','Izmanto ciklu ar iepriekš nezināmu atkārtojumu skaitu un atpazīst bezgalīga cikla risku.','Izvēlas for vai while, izmanto if, break un continue.','Veido sarakstus, izmanto indeksus un len().','Maina sarakstus ar append(), insert(), remove(), pop().','Apstrādā sarakstu elementus ar for ciklu.','Aprēķina summu, vidējo, minimumu un maksimumu.','Atlasa un meklē vērtības, izmantojot ciklus un nosacījumus.','Ar ciklu ievada vairākas vērtības sarakstā un apstrādā tās.','Patstāvīgi risina kompleksas problēmas ar cikliem, sarakstiem un nosacījumiem.'];
@@ -23,13 +23,25 @@ function render(){nav();if(current!==1){$('#content').innerHTML=`<div class="her
 function toggleBusy(busy){document.querySelectorAll('.run,.verify').forEach(b=>b.disabled=busy);document.querySelectorAll('.cancel').forEach(b=>b.hidden=!busy);}
 function normalized(s){return s.replace(/\r/g,'').trim().split('\n').map(x=>x.trimEnd()).filter((x,i,a)=>!(i===a.length-1&&x===''));}
 function show(root,kind,title,body){const box=root.querySelector('.result');box.hidden=false;box.className='result '+kind;box.innerHTML=`<strong>${escapeHTML(title)}</strong><pre>${escapeHTML(body)}</pre>`;}
+function greetingMatches(lines,inputs){
+ const [name,countText]=inputs;
+ const count=Number(countText);
+ if(!Number.isInteger(count)||count<0||lines.length!==count)return false;
+ if(count===0)return true;
+ // Pieņem dažādus pieklājīgus sveicienus, bet pieprasa ievadīto vārdu katrā rindā.
+ return lines.every(line=>{
+   const text=line.trim();
+   const greeting=/^(sveiki|sveika|sveiks|labdien|čau|labvakar|labrīt)[,! ]+/iu;
+   return greeting.test(text)&&text.includes(name)&&text.length<=120;
+ });
+}
 function feedbackFor(q,actual,expected){const lines=normalized(actual);if(q.id==='hw1'||q.id==='ex2'){if(lines.length===expected.length-1&&lines.every((v,i)=>v===expected[i]))return 'Trūkst pēdējā skaitļa. Atceries: range() beigu vērtību neiekļauj.';}
  if(q.id==='hw3'&&lines.includes('Starts!')&&lines.filter(x=>x==='Starts!').length>1)return '“Starts!” jāizvada tikai vienu reizi — ārpus cikla.';
  return q.feedback||q.hint||'Salīdzini savu izvadi ar uzdevuma prasībām.';}
 async function runTask(id,verify){if(running)return;const q=[...lesson01.exercises,...lesson01.independent].find(x=>x.id===id);const root=document.querySelector(`[data-task="${id}"]`),codeText=root.querySelector('.code-input').value,inputs=(root.querySelector('.test-input')?.value.split(/\r?\n/) || []);if(!codeText.trim()){show(root,'warn','Nav ievadīts kods','Ieraksti Python programmu un mēģini vēlreiz.');return;}running=true;toggleBusy(true);show(root,'info','Notiek izpilde','Pirmā Python vides ielāde var aizņemt ilgāku laiku.');try{
  const cases=verify?(q.tests||[{input:[],expected:q.expected}]):[{input:inputs,expected:[]}];let ok=true;for(let i=0;i<cases.length;i++){const c=cases[i];const res=await execute(codeText,c.input);if(res.error){show(root,'warn','Programmas kļūda',res.error.replace(/File "<skolena_kods>"/g,'Skolēna kodā'));ok=false;break;}
  if(!verify){show(root,'info','Programmas izvade',res.output||'(Programma neko neizvadīja)');break;}
- const actual=normalized(res.output),expected=c.expected;if(JSON.stringify(actual)!==JSON.stringify(expected)){ok=false;show(root,'warn',`Tests ${i+1} nav izturēts`,`${feedbackFor(q,res.output,expected)}\n\nSagaidāmais rezultāts:\n${expected.join('\n')||'(tukša izvade)'}\n\nTava programma izvadīja:\n${res.output||'(tukša izvade)'}`);break;}
+ const actual=normalized(res.output),expected=c.expected;const matches=q.id==='hw2'?greetingMatches(actual,c.input):JSON.stringify(actual)===JSON.stringify(expected);if(!matches){ok=false;show(root,'warn',`Tests ${i+1} nav izturēts`,`${feedbackFor(q,res.output,expected)}\n\nSagaidāmais rezultāts:\n${expected.join('\n')||'(tukša izvade)'}\n\nTava programma izvadīja:\n${res.output||'(tukša izvade)'}`);break;}
  }
  if(verify&&ok)show(root,'good','Visi testi izturēti! ✓',q.success||`Risinājums atbilst ${cases.length} pārbaudes ${cases.length===1?'testam':'testiem'}.`);
  }catch(e){show(root,'warn','Neizdevās izpildīt',String(e));}finally{running=false;toggleBusy(false);}}

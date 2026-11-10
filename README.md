@@ -34,3 +34,12 @@ Telefonā stundu navigācija ir nolaižamā izvēlnē; redaktors, pogas un satur
 ## Apvienotā versija — ievades lauks
 
 Saglabāti skolotāja labojumi `lesson-01.js` un `index.html`. Ievades lauks redzams tikai 2. patstāvīgajā uzdevumā (`needsInput: true`). `index.html` un `js/app.js` papildināti ar `?v=4` kešatmiņas atjaunošanai.
+
+## Versija 1.3 — drošības un pārbaudes uzlabojumi
+
+- Pievienota ierobežojoša CSP (Content Security Policy), kas atļauj resursus no pašas vietnes un Pyodide bibliotēku no `cdn.jsdelivr.net`. Tā nav pilnīga neuzticama Python koda izolācija. CSP `meta` direktīva `frame-ancestors` pārlūkprogrammās netiek piemērota; to var iestatīt tikai HTTP galvenēs, kuras GitHub Pages šeit nekontrolējam.
+- Python koda un ievades apjoma ierobežojumi; `print()` izvadei ierobežots apjoms, lai samazinātu nejaušas pārlūkprogrammas pārslodzes risku. Bezgalīgu ciklu joprojām pārtrauc Web Worker taimauts.
+- 2. patstāvīgajā uzdevumā automātiskā pārbaude pieņem vairākus pieklājīgus sasveicināšanās variantus ar ievadīto vārdu, nevis tikai precīzu “Sveiki, ...!”. Joprojām pārbauda atkārtojumu skaitu ar trim testiem.
+- Paaugstināta JavaScript versija uz `v=5`, lai atjauninātos arī mobilās ierīces.
+
+**Drošības robeža:** Šī ir uzraudzītai mācību lietošanai paredzēta vide, nevis drošs neuzticama koda izpildes pakalpojums. Python kods var izmantot Pyodide JS sasaisti; CSP nav absolūta aizsardzība pret visām darbībām. Skolēniem jāizvairās no personas datu un paroļu ievades. Pirms plašas izmantošanas pārbaudiet publicēto lapu telefonā un datorā, tostarp Python pirmreizējo ielādi, `input()`, kļūdas, bezgalīgu ciklu un visus trīs pārbaudes testus.

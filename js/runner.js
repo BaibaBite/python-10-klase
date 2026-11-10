@@ -9,6 +9,7 @@ function ensureWorker(){
 function reset(message){worker?.terminate();worker=null;loaded=false;for(const p of pending.values()){clearTimeout(p.timer);p.resolve({output:'',error:message});}pending.clear();}
 export async function execute(code,inputs=[],onLoading=()=>{}){
  if(code.length>12000)return {output:'',error:'Kods ir pārāk garš (maksimums 12 000 rakstzīmes).'};
+ if(inputs.length>100 || inputs.some(v=>String(v).length>2000))return {output:'',error:'Pārāk daudz ievades datu.'};
  const w=ensureWorker(), id=++seq;
  onLoading();
  return new Promise(resolve=>{
