@@ -30,3 +30,7 @@ Skolēniem nav nepieciešams GitHub konts. Bez repozitorija rakstīšanas tiesī
 ## Versija 1.1 — mobilā pielāgošana
 
 Telefonā stundu navigācija ir nolaižamā izvēlnē; redaktors, pogas un saturs pielāgojas ekrāna platumam. Atjaunojot GitHub Pages, augšupielādē **visus** šī arhīva failus, saglabājot mapju struktūru. Ja redzama iepriekšējā versija, pārlādē lapu bez kešatmiņas.
+
+## Apvienotā versija — ievades lauks
+
+Saglabāti skolotāja labojumi `lesson-01.js` un `index.html`. Ievades lauks redzams tikai 2. patstāvīgajā uzdevumā (`needsInput: true`). `index.html` un `js/app.js` papildināti ar `?v=4` kešatmiņas atjaunošanai.
