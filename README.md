@@ -40,3 +40,8 @@ Skolēniem nav nepieciešams GitHub konts. Bez repozitorija rakstīšanas tiesī
 ## Pedagoģiskās piezīmes
 
 Prezentācijā personalizētā sveiciena uzdevumam nav noteikts precīzs izvades formāts. Lai automātiskie testi būtu viennozīmīgi, šajā vietnē precizēts formāts: `Sveiki, Vārds!` katrā rindā. Pārējie uzdevumi balstīti uz prezentācijas formulējumiem.
+
+
+## Versija 1.1 — mobilā pielāgošana
+
+Telefonā stundu navigācija ir nolaižamā izvēlnē; redaktors, pogas un saturs pielāgojas ekrāna platumam. Atjaunojot GitHub Pages, augšupielādē **visus** šī arhīva failus, saglabājot mapju struktūru. Ja redzama iepriekšējā versija, pārlādē lapu bez kešatmiņas.
