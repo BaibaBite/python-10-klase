@@ -1,17 +1,6 @@
 # Python 10. klase — cikli un saraksti
 
-Mobilajām ierīcēm pielāgota statiska mācību vietne ar 11 stundu navigāciju. 1. stunda ir izstrādāta pēc pievienotās prezentācijas **“Ievads ciklos. FOR un RANGE()”** (10 slaidi). Pārējo stundu sadaļas ir sagataves.
-
-## Palaišana lokāli
-
-Tā kā izmantoti JavaScript moduļi un Web Worker, neatveriet `index.html` ar `file://`.
-
-```bash
-cd python-10-klase
-python -m http.server 8000
-```
-
-Atveriet `http://localhost:8000`.
+Mobilajām ierīcēm pielāgota statiska mācību vietne ar 11 stundu navigāciju.
 
 ## Publicēšana GitHub Pages
 
@@ -36,10 +25,6 @@ Skolēniem nav nepieciešams GitHub konts. Bez repozitorija rakstīšanas tiesī
 ## Satura pievienošana
 
 1. stundas saturs atrodas `lessons/lesson-01.js`. Pārējo stundu nosaukumi un sasniedzamie rezultāti — `js/app.js`. Pievienojot nākamās stundas, ieteicams veidot atsevišķus `lesson-02.js` utt. un pieslēgt tos kopējai saskarnei.
-
-## Pedagoģiskās piezīmes
-
-Prezentācijā personalizētā sveiciena uzdevumam nav noteikts precīzs izvades formāts. Lai automātiskie testi būtu viennozīmīgi, šajā vietnē precizēts formāts: `Sveiki, Vārds!` katrā rindā. Pārējie uzdevumi balstīti uz prezentācijas formulējumiem.
 
 
 ## Versija 1.1 — mobilā pielāgošana
