@@ -43,3 +43,40 @@ Saglabāti skolotāja labojumi `lesson-01.js` un `index.html`. Ievades lauks red
 - Paaugstināta JavaScript versija uz `v=5`, lai atjauninātos arī mobilās ierīces.
 
 **Drošības robeža:** Šī ir uzraudzītai mācību lietošanai paredzēta vide, nevis drošs neuzticama koda izpildes pakalpojums. Python kods var izmantot Pyodide JS sasaisti; CSP nav absolūta aizsardzība pret visām darbībām. Skolēniem jāizvairās no personas datu un paroļu ievades. Pirms plašas izmantošanas pārbaudiet publicēto lapu telefonā un datorā, tostarp Python pirmreizējo ielādi, `input()`, kļūdas, bezgalīgu ciklu un visus trīs pārbaudes testus.
+
+
+## Versija 1.4 — 2. stunda
+
+Pievienota 2. stunda ar teoriju, četriem vingrinājumiem (apzināti kļūdains sākuma kods), trim patstāvīgiem uzdevumiem un noslēguma jautājumu.
+
+`input()` ievades lauks tiek rādīts 2. stundas 2. vingrinājumā un 2., 3. patstāvīgajā darbā. Pārbaude izmanto vairākas testa ievades; poga “Izpildīt kodu” izmanto skolēna ievadi. Skaitliskās atbildes pārbaudē pieņem arī vienu skaidrojošu izvades rindu, piemēram, `Summa: 625`. Reizināšanas tabulas pārbaude pieņem 10 rindas ar pareizu pēdējo skaitli katrā rindā.
+
+Lai atjauninātu GitHub Pages, augšupielādējiet `lessons/lesson-02.js`, `js/app.js`, `index.html` un šo README. Pārējos failus saglabājiet no versijas 1.3.
+
+**Piezīme:** pārbaudes testi ir redzami klienta pusē; tie paredzēti mācībām, nevis drošai summatīvai vērtēšanai.
+
+## Versija 1.5 — 3. stunda: while cikls
+
+- Pievienots `lessons/lesson-03.js` ar teoriju, 4 kļūdaina koda labošanas vingrinājumiem, 3 patstāvīgajiem uzdevumiem un noslēguma jautājumu.
+- `js/app.js` atjaunināta navigācija: pieejamas 1.–3. stundas; pārējās ir sagataves.
+- `index.html` JavaScript versija `v=7` kešatmiņas atsvaidzināšanai.
+- Ievades lauki 3. stundā ir **tikai** 3. un 4. vingrinājumā un visos trīs patstāvīgajos uzdevumos. 1. un 2. vingrinājumā ievades lauku nav.
+- Katru `input()` vērtību ievades laukā raksta atsevišķā rindā. Poga “Pārbaudīt risinājumu” izmanto vairākus iepriekš definētus ievades testus, nevis ievades laukā ierakstīto piemēru.
+- Bezgalīgi cikli: izpilde notiek Web Worker, un tā tiek pārtraukta pēc laika ierobežojuma (pēc ielādes ~7 s). Ļoti daudz izvades gadījumā var nostrādāt izvades apjoma limits ātrāk. Poga “Apturēt” ļauj pārtraukt izpildi manuāli. Tas nav absolūts drošības izolācijas mehānisms.
+- PIN uzdevumā tiek izmantots tikai mācību piemēra PIN `2468`; skolēniem nevajadzētu ievadīt īstas paroles vai PIN.
+- Automātiskie testi paredzēti formatīvai atgriezeniskajai saitei. Tie salīdzina prasīto izvadi, tāpēc dažādi citādi loģiski korekti teksta formulējumi var netikt pieņemti.
+
+### Atjaunināšana no versijas 1.4
+
+Pievieno `lessons/lesson-03.js`, aizstāj `js/app.js` un `index.html`; pēc vēlēšanās atjaunini `README.md`. Pārējos failus var atstāt nemainītus.
+
+### Pārbaude pirms izmantošanas klasē
+
+1. Palaid 1. vingrinājuma sākuma kodu; jānostrādā izvades apjoma vai laika ierobežojumam, un lapai jāturpina reaģēt.
+2. Izlabo 1. vingrinājumu ar `skaitlis += 1`, pārbaudi rezultātu 1–10.
+3. Pārbaudi 3. vingrinājumu ar ievadēm `-2`, `0`, `5` (katru savā rindā).
+4. Pārbaudi 4. vingrinājumu ar `4`, `-2`, `3`, `0`.
+5. Pārbaudi PIN uzdevumu ar `1111`, `2468` un minēšanas uzdevumu ar `3`, `9`, `7`.
+6. Pārbaudi uz telefona, ka 1. un 2. vingrinājumā nav ievades lauka.
+
+JavaScript sintakse pārbaudīta, taču pilns Pyodide pārlūkprogrammas tests nav veikts.
